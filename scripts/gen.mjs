@@ -140,6 +140,7 @@ function processContent(p) {
   h = h.replace(/<\/iframe><\/div>\s*<\/iframe>/g, '</iframe></div>');
   const seenIds = new Set(['main', 'nav', 'menu-btn', 'sidelist', 'q', 'count', 'results', 'empty']);
   h = h.replace(/\sid="([^"]+)"/g, (m, id) => { if (seenIds.has(id)) return ''; seenIds.add(id); return m; });
+  h = h.replace(/(<\/a>)\s*[0-9]+(?:\.[0-9]+)?\s?(?:KB|MB|GB)\b/gi, '$1'); // drop file sizes shown next to document links
   h = fixAnchors(h);
   return balance(labelGeneric(h, p));
 }
