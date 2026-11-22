@@ -45,13 +45,19 @@ export function head(title, navHtml, opts = {}) {
 </div></header>`;
 }
 
+const SOCIAL = [
+  ['X (Twitter)', 'https://x.com/actuariesindia', '<path d="M4 4l11.733 16h4.267L8.267 4z"/><path d="M4 20l6.768-6.768m2.46-2.46L20 4"/>'],
+  ['Facebook', 'https://www.facebook.com/actuariesindia', '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>'],
+  ['Instagram', 'https://www.instagram.com/actuariesindia/', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/>'],
+  ['YouTube', 'https://www.youtube.com/user/IAIMumbai', '<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>'],
+];
 export const foot = `<footer class="site"><div class="wrap"><div class="cols">
 <div><img src="assets/img/logo-white.png" alt="Institute of Actuaries of India" style="width:280px;height:auto"><p>A statutory body established under The Actuaries Act, 2006 for regulation of the profession of actuaries in India.</p>
 <p><a class="link" style="color:#fff" href="contact-us.html">Contact us ${arr}</a></p></div>
 <div><p class="fh">Quick links</p><ul>${FOOTER_LINKS.quick.map(lk).join('')}</ul></div>
 <div><p class="fh">Links</p><ul>${FOOTER_LINKS.links.map(lk).join('')}</ul></div>
 <div><p class="fh">Other links</p><ul>${FOOTER_LINKS.other.map(lk).join('')}</ul>
-<p class="fh" style="margin-top:22px">Follow</p><ul class="social"><li><a href="https://x.com/actuariesindia" target="_blank" rel="noopener">X</a></li><li><a href="https://www.facebook.com/actuariesindia" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/actuariesindia/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/user/IAIMumbai" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+<p class="fh" style="margin-top:22px">Follow</p><ul class="social">${SOCIAL.map(([n, h, d]) => `<li><a href="${h}" target="_blank" rel="noopener" aria-label="${n}"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg></a></li>`).join('')}</ul></div>
 </div><div class="copy">© Copyright Institute of Actuaries of India (IAI). All Rights Reserved.</div></div></footer>
 </body></html>`;
 
