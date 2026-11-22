@@ -382,9 +382,7 @@ footer .fh{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:up
 footer li{margin:0}footer li a{display:inline-block;padding:7px 0}
 .util nav a{display:inline-flex;align-items:center;min-height:40px}
 /* link cues: external + document type */
-.prose a[target=_blank]:not([data-ft]):not(.btn):not(.card)::after,.util a[target=_blank]::after,footer li a[target=_blank]::after,.ticker a[target=_blank]::after,header .actions a[target=_blank]::after{content:"";content:"" / " (opens in a new tab)";text-decoration:none}
-a[data-ft]::after{content:attr(data-ft);font-size:10.5px;font-weight:700;letter-spacing:.06em;border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:middle;opacity:.75;text-decoration:none;display:inline-block;line-height:1.5}
-.ft{font-size:10.5px;font-weight:700;letter-spacing:.06em;border:1px solid var(--mute);color:var(--mute);border-radius:3px;padding:0 5px;line-height:1.6;flex:none}
+.prose a[target=_blank]:not(.btn):not(.card)::after,.util a[target=_blank]::after,footer li a[target=_blank]::after,.ticker a[target=_blank]::after,header .actions a[target=_blank]::after{content:"";content:"" / " (opens in a new tab)";text-decoration:none}
 /* tables, embeds, search, hubs */
 tbody tr[hidden]{display:none}
 .tcount{margin:0;padding:8px 16px;font-size:13px;color:var(--mute)}.tcount:empty{display:none}
