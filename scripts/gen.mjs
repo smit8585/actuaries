@@ -350,8 +350,18 @@ for (let i = 0; i < 7; i++) { const t = 70 + i * 24; cv += `<path d="M-30 340 C 
 const heroArt = `<svg class="art" viewBox="0 0 540 600" preserveAspectRatio="xMidYMin slice" aria-hidden="true">${grid}${cv}<line x1="270" y1="214" x2="270" y2="340" stroke="#B5121B" stroke-width="2" stroke-dasharray="4 5"/><circle cx="270" cy="214" r="6" fill="#B5121B"/></svg>`;
 const rings = `<svg viewBox="0 0 432 220" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" fill="none">${[...Array(9)].map((_, j) => `<circle cx="${380 - j * 26}" cy="${200 + j * 4}" r="${40 + j * 22}" stroke="#fff" stroke-opacity="${0.05 + j * 0.012}"/>`).join('')}</svg>`;
 const GCA = 'https://actuariesindia.org/sites/default/files/2026-10/26th_GCA_EOI.pdf';
+const TICK = [
+  ['Registration Announcement – Professionalism MCQ Examination', abs(findHref('Registration Announcement'))],
+  ['21st CILA · 26–27 Nov 2026', L(EV[0][4])],
+  ['47th India Fellowship Seminar · 10 Dec 2026', L(EV[1][4])],
+  ['Mock Exams for November 2026', abs(findHref('Mock Exams for November'))],
+  ['Actuarial Apprenticeship 2026 | The Oriental Insurance Company Limited', abs(findHref('Actuarial Apprenticeship'))],
+  ['19th Current Issues in Health and Care Insurance', L(EV[2][4])],
+  ['Training (Pre-Recorded videos) – May 2027', abs(findHref('Training (Pre-Recorded'))],
+];
+const tickSet = hidden => `<div class="set"${hidden ? ' aria-hidden="true"' : ''}>${TICK.map(([t, h]) => `<a href="${h}"${/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : ''}${hidden ? ' tabindex="-1"' : ''}>${t}</a><i aria-hidden="true">◆</i>`).join('')}</div>`;
 const home = `
-<div class="ticker"><div class="wrap"><span class="chip">Latest updates</span><div class="items"><a href="${abs(findHref('Registration Announcement'))}" target="_blank" rel="noopener">Registration Announcement – Professionalism MCQ Examination</a><i>◆</i><a href="${L(EV[0][4])}">21st CILA · 26–27 Nov 2026</a><i>◆</i><a href="${L(EV[1][4])}">47th India Fellowship Seminar · 10 Dec 2026</a></div><a class="link" href="announcement.html" aria-label="View all latest updates">View all ${arr}</a></div></div>
+<div class="ticker"><div class="wrap"><span class="chip">Latest updates</span><div class="items" role="region" aria-label="Latest updates"><div class="track">${tickSet(false)}${tickSet(true)}</div></div><a class="link" href="announcement.html" aria-label="View all latest updates">View all ${arr}</a></div></div>
 
 <section class="hero"><div class="wrap"><div>
 <div class="eyebrow">The profession’s statutory body · Est. 2006</div>

@@ -210,7 +210,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.15);padding-top:28px;font-si
   .util nav,.actions .btn.ghost{display:none}.util .t{font-size:11px}
   .g4,.g3,.g2,.steps,.tiers,.vmv{grid-template-columns:1fr}
   .timeline .row{grid-template-columns:1fr;gap:10px}
-  .ticker .items{display:none}.hero{padding:40px 0}section{padding:56px 0}
+  .hero{padding:40px 0}section{padding:56px 0}
   footer .cols{grid-template-columns:1fr}
   .actions .btn.red{padding:10px 12px;font-size:13px}
   header.site .wrap{gap:8px}.actions{gap:8px}
@@ -522,3 +522,36 @@ footer .social a:hover{background:#fff;color:var(--navy);border-color:#fff}
 
 .prose .hub-link,.prose .hub-feat,.prose .hub-jump a,.prose .hub-kids a{text-decoration:none}
 .prose .hub-link:hover .t{text-decoration:underline}
+
+/* latest-updates ticker: chip and "View all" stay put, the items scroll */
+.ticker .link{flex:none}
+.ticker .items{min-width:0;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+.ticker .track{display:flex;width:max-content;animation:ticker 55s linear infinite}
+.ticker .set{display:flex;align-items:center;gap:28px;padding-right:28px;flex:none}
+.ticker .set a{white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
+.ticker .set a:hover{color:var(--blue);text-decoration:underline}
+.ticker:hover .track,.ticker:focus-within .track{animation-play-state:paused}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .ticker .track{animation:none!important;width:auto}
+  .ticker .items{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+  .ticker .set[aria-hidden="true"]{display:none}
+}
+@media (max-width:640px){.ticker .wrap{gap:12px}.ticker .chip{padding:6px 8px;font-size:10.5px}.ticker .link{font-size:13px}.ticker .track{animation-duration:45s}}
+
+/* small-screen header: logo, wordmark, Admission and menu never overlap */
+header.site .brand{min-width:0;flex:1 1 auto}
+header.site .actions{flex:none}
+@media (max-width:480px){
+  header.site .wrap{gap:10px}
+  header.site .brand .mark{height:34px;width:auto}
+  header.site .brand>span{min-width:0}
+  header.site .brand .b{font-size:15px;line-height:1.1;white-space:normal;display:block}
+  header.site .actions{gap:6px}
+  header.site .actions .btn.red{padding:9px 12px;font-size:13px;min-height:44px}
+}
+@media (max-width:360px){
+  header.site .brand .b{font-size:13.5px}
+  header.site .actions .btn.red{padding:9px 10px;font-size:12.5px}
+}
+@media (max-width:480px){header.site .brand{min-height:44px;align-items:center}}

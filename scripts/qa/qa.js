@@ -76,6 +76,10 @@ window.QA = async function (win, W) {
   /* ---------- focus visibility: a global :focus-visible outline rule must exist and nothing may remove outlines ---------- */
   { let ok = false, killed = null; for (const ss of d.styleSheets) { let rules; try { rules = ss.cssRules; } catch (e) { continue; } for (const r of rules) { if (r.selectorText && /(^|,)\s*:focus-visible/.test(r.selectorText) && r.style.outlineStyle && r.style.outlineStyle !== 'none' || (r.selectorText === ':focus-visible' && r.style.outline)) ok = true; if (r.selectorText && /:focus/.test(r.selectorText) && /outline\s*:\s*(none|0)/.test(r.cssText) && !/outline-offset/.test(r.cssText)) killed = r.selectorText; } } if (!ok) fail('focus-rule', 'no :focus-visible outline rule'); if (killed) fail('focus-removed', killed); }
 
+  /* ---------- header: brand, actions and menu button must never overlap ---------- */
+  { const R = s => { const e = d.querySelector(s); return e ? e.getBoundingClientRect() : null; };
+    const b = R('header.site .brand'), t = R('header.site .brand .b'), a = R('header.site .actions');
+    if (b && a) { const right = Math.max(b.right, t ? t.right : 0); if (right > a.left + 0.5) fail('header-overlap', `brand ends ${Math.round(right)} > actions start ${Math.round(a.left)}`); if (a.right > W + 0.5) fail('header-offscreen', Math.round(a.right)); } }
   /* ---------- header / menu behaviour ---------- */
   const hdr = d.querySelector('header.site'), nav = d.getElementById('nav');
   const fire = (el, type, opts) => el.dispatchEvent(new win.PointerEvent(type, Object.assign({ bubbles: true, pointerType: 'mouse' }, opts)));
