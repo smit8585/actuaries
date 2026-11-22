@@ -63,14 +63,14 @@ export const foot = `<footer class="site"><div class="wrap"><div class="cols">
 
 export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-export function shell({ title, crumbs = [], lead = '', side = null, sideTitle = '', body, navHtml, prev = null, next = null, help = true }) {
+export function shell({ title, crumbs = [], lead = '', side = null, sideTitle = '', body, navHtml, prev = null, next = null, help = true, hub = false }) {
   const cr = crumbs.map(([t, h]) => `<li>${h ? `<a href="${h}">${esc(t)}</a>` : `<span>${esc(t)}</span>`}</li>`).join('');
   const sidebar = side && side.length ? `<nav class="side" aria-label="In this section"><button class="side-toggle" type="button" aria-expanded="false" aria-controls="sidelist"><span>In this section</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="sidelist" class="sidelist"><p class="side-h">${esc(sideTitle)}</p>${side.map(s => sideItem(s)).join('')}</div></nav>` : '';
   const pn = (prev || next) ? `<nav class="pn" aria-label="Previous and next pages">${prev ? `<a class="prev" href="${prev.href}"><small>Previous</small><span>${esc(prev.text)}</span></a>` : '<span></span>'}${next ? `<a class="next" href="${next.href}"><small>Next</small><span>${esc(next.text)}</span></a>` : '<span></span>'}</nav>` : '';
   const helpBox = '';
-  return head(esc(title), navHtml) + `<main id="main"><div class="page-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li>${cr}<li><span aria-current="page">${esc(title)}</span></li></ol></nav>
+  return head(esc(title), navHtml) + `<main id="main"><div class="page-head${hub ? ' hub-head' : ''}"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li>${cr}<li><span aria-current="page">${esc(title)}</span></li></ol></nav>
 <h1>${esc(title)}</h1>${lead ? `<p class="lead">${lead}</p>` : ''}</div></div>
-<div class="wrap layout${sidebar ? '' : ' nosidebar'}">${sidebar}<div class="content"><div class="prose">${body}</div>${pn}${helpBox}</div></div></main>` + foot;
+<div class="wrap layout${sidebar ? '' : ' nosidebar'}${hub ? ' hubpage' : ''}">${sidebar}<div class="content"><div class="prose">${body}</div>${pn}${helpBox}</div></div></main>` + foot;
 }
 function sideItem(s) {
   const e = /^https?:/.test(s.href || '');

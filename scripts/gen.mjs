@@ -261,11 +261,57 @@ for (const slug of Object.keys(pages)) {
 }
 
 /* ---------- section hub pages ---------- */
+const CUSTOM = {
+  'about-iai': 'A statutory body established by an Act of Parliament to regulate the profession of actuaries in India.',
+  'the_council': 'Who governs the Institute: 12 elected Fellow members and 2 government nominees.',
+  'annual-report': 'The Institute’s annual reports on its work and finances.',
+  'what-actuary': 'Actuaries make financial sense of the future by valuing uncertainty and risk.',
+  'who-can-become-actuary': 'Strong maths, statistics, analytics and finance skills — and the commitment to pass every exam.',
+  'student': 'How student membership works for candidates who enrol for the Institute’s examinations.',
+  'about-acet': 'The entrance test for candidates who plan to enrol as student members and take the actuarial examinations.',
+  'examination-dates-1': 'Registration, exam and result dates for the current ACET session.',
+  'syllabus': 'The subjects and topics covered in the Institute’s examinations.',
+  'annual-membership': 'Renew your membership every 1 April to keep your status active.',
+  'fellow': 'Routes to Fellowship: the IAI examination route and mutual recognition agreements.',
+  'verification-iai-member': 'Verify the credentials of an IAI member.',
+  'upcoming-events': 'Seminars, webinars and conferences coming up at the Institute.',
+  'events-past': 'Seminars, webinars and conferences held in previous years.',
+  '47th-india-fellowship-seminar': 'The seminar required for admission as a Fellow Member — 10 December 2026.',
+  'associate': 'Eligibility and the online Change of Category process for Associate membership.',
+  'cera-chartered-enterprise-risk-actuary-qualification': 'The global enterprise risk qualification the Institute is accredited to award.',
+  'direct-entry': 'Qualifications that allow direct admission as a student member without ACET.',
+  'exam-fees': 'Examination fees per subject for India and SAARC countries.',
+};
+const blurb = slug => {
+  if (CUSTOM[slug.toLowerCase()]) return CUSTOM[slug.toLowerCase()];
+  const p = pages[slug]; if (!p) return '';
+  const paras = [...p.html.matchAll(/<(?:p|li)[^>]*>([\s\S]*?)<\/(?:p|li)>/g)].map(m => textOf(m[1])).filter(t => t.length >= 45 && !/^(skip to|home\b)/i.test(t));
+  let t = paras.find(x => /^[A-Z]/.test(x) && !/^[^ ]{0,25}\(/.test(x) && !/^(Members\(|Please|Note|This is to inform)/.test(x)) || ''; if (!t || t.length < 30) return '';
+  if (t.length > 150) t = t.slice(0, 150).replace(/\s+\S*$/, '') + '…';
+  return t;
+};
+const FEATURED = {
+  About: ['about-iai', 'the_council', 'annual-report'],
+  'Become an Actuary': ['what-actuary', 'who-can-become-actuary', 'student'],
+  'Actuarial Studies': ['about-acet', 'examination-dates-1', 'syllabus'],
+  Members: ['annual-membership', 'fellow', 'verification-iai-member'],
+  Events: ['upcoming-events', 'events-past', '47th-india-fellowship-seminar'],
+};
+const caseKey = k => Object.keys(pages).find(x => x.toLowerCase() === k.toLowerCase());
 for (const t of tops) {
-  const cardFor = l => { const r = linkTarget(l); const href = r ? r.href : null; const e = href && /^https?:/.test(href); const kids = l.children.map(c => { const rc = linkTarget(c); return rc ? `<li><a href="${rc.href}"${/^https?:/.test(rc.href) ? ' target="_blank" rel="noopener"' : ''}>${esc(c.text)}</a></li>` : `<li>${esc(c.text)}</li>`; }).join('');
-    return `<div class="card hubcard"><h3>${href ? `<a href="${href}"${e ? ' target="_blank" rel="noopener"' : ''}>${esc(l.text)}</a>` : esc(l.text)}</h3>${kids ? `<ul class="kids">${kids}</ul>` : ''}</div>`; };
-  const body = t.groups.map(g => `<section id="g-${slugify(g.title || t.name)}" class="hubgroup"><h2>${esc(g.title || t.name)}</h2><div class="grid g3">${g.links.map(cardFor).join('')}</div></section>`).join('');
-  write(hubFile(t), shell({ title: t.name, crumbs: [], lead: hubLead[t.name] || '', body, navHtml: navFor(t.name), side: null }));
+  const all = []; const walk = l => { const r = linkTarget(l); if (r) all.push({ text: l.text, href: r.href, slug: r.slug }); l.children.forEach(walk); };
+  t.groups.forEach(g => g.links.forEach(walk));
+  const local = all.filter(x => x.slug);
+  let feat = (FEATURED[t.name] || []).map(k => caseKey(k)).filter(Boolean).map(k => local.find(x => x.slug === k)).filter(Boolean);
+  if (feat.length < 3) feat = [...feat, ...local.filter(x => !feat.includes(x) && blurb(x.slug))].slice(0, 3);
+  const featHtml = `<section class="hub-feature" aria-label="Featured in ${esc(t.name)}"><div class="hub-feat-grid">${feat.map((f, i) => `<a class="hub-feat${i === 0 ? ' lead' : ''}" href="${f.href}"><span class="k">${i === 0 ? 'Start here' : 'Popular'}</span><h2>${esc(f.text)}</h2><p>${esc(blurb(f.slug))}</p><span class="go">Open ${arr}</span></a>`).join('')}</div></section>`;
+  const rowFor = l => { const r = linkTarget(l); const href = r ? r.href : null; const e = href && /^https?:/.test(href); const bl = r && r.slug ? blurb(r.slug) : '';
+    const kids = l.children.map(c => { const rc = linkTarget(c); return rc ? `<li><a href="${rc.href}"${/^https?:/.test(rc.href) ? ' target="_blank" rel="noopener"' : ''}>${esc(c.text)}</a></li>` : `<li><span>${esc(c.text)}</span></li>`; }).join('');
+    return `<div class="hub-row">${href ? `<a class="hub-link" href="${href}"${e ? ' target="_blank" rel="noopener"' : ''}><span class="t">${esc(l.text)}</span>${bl ? `<span class="d">${esc(bl)}</span>` : ''}${arr}</a>` : `<p class="hub-label">${esc(l.text)}</p>`}${kids ? `<ul class="hub-kids">${kids}</ul>` : ''}</div>`; };
+  const groups = t.groups.map(g => `<section id="g-${slugify(g.title || t.name)}" class="hub-group"><div class="hub-gh"><h2>${esc(g.title || t.name)}</h2><p>${g.links.length} ${g.links.length === 1 ? 'page' : 'pages'}</p></div><div class="hub-rows">${g.links.map(rowFor).join('')}</div></section>`).join('');
+  const nav = `<nav class="hub-jump" aria-label="Jump to a group">${t.groups.map(g => `<a href="#g-${slugify(g.title || t.name)}">${esc(g.title || t.name)}</a>`).join('')}</nav>`;
+  const body = featHtml + (t.groups.length > 1 ? nav : '') + groups;
+  write(hubFile(t), shell({ title: t.name, crumbs: [], lead: hubLead[t.name] || '', body, navHtml: navFor(t.name), side: null, hub: true }));
   searchIndex.push([t.name, hubFile(t), (hubLead[t.name] || '') + ' ' + t.groups.map(g => g.title).join(' ')]);
 }
 
