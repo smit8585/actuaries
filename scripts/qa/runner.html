@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>QA runner</title>
+<script src="qa.js"></script>
+<body style="font:14px system-ui"><pre id="o">idle</pre>
+<script>
+window.__results = {}; window.__done = false; window.__progress = 0;
+async function runAll(widths, only) {
+  const pages = await (await fetch('pages.json')).json();
+  const list = only ? pages.filter(p => only.includes(p)) : pages;
+  for (const W of widths) {
+    for (const p of list) {
+      const f = document.createElement('iframe'); f.style.cssText = `width:${W}px;height:900px;border:0;position:absolute;left:0;top:0;visibility:hidden`;
+      document.body.appendChild(f);
+      await new Promise(res => { f.onload = res; f.src = '../' + p; });
+      try { await f.contentWindow.document.fonts.ready; } catch (e) {}
+      await new Promise(r => setTimeout(r, 60));
+      try { const r = await window.QA(f.contentWindow, W); (window.__results[p] = window.__results[p] || {})[W] = r; }
+      catch (e) { (window.__results[p] = window.__results[p] || {})[W] = { fails: { 'qa-exception': [String(e).slice(0, 120)] }, info: {} }; }
+      f.remove(); window.__progress++;
+    }
+  }
+  window.__done = true; document.getElementById('o').textContent = 'done ' + window.__progress;
+}
+window.runAll = runAll;
+</script>

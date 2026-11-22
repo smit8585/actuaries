@@ -1,0 +1,791 @@
+[
+ {
+  "name": "Home",
+  "href": "/",
+  "groups": []
+ },
+ {
+  "name": "About",
+  "href": "",
+  "groups": [
+   {
+    "title": "About",
+    "links": [
+     {
+      "text": "About IAI",
+      "href": "/about-iai",
+      "children": []
+     },
+     {
+      "text": "About IAI-Aero",
+      "href": "/about-iai-aero",
+      "children": []
+     },
+     {
+      "text": "Membership Statistics",
+      "href": "https://actuariesindia.org/membership-statistic?field_as_on_target_id=1337",
+      "children": []
+     },
+     {
+      "text": "Organisation Chart",
+      "href": "/organisation-chart-1",
+      "children": []
+     },
+     {
+      "text": "Coffee Table Book",
+      "href": "/coffee-table-book",
+      "children": []
+     },
+     {
+      "text": "Annual Report",
+      "href": "/annual-report",
+      "children": []
+     },
+     {
+      "text": "Accreditation",
+      "href": "/iai-accreditation-program",
+      "children": []
+     },
+     {
+      "text": "Media",
+      "href": "/media-0",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Governance",
+    "links": [
+     {
+      "text": "The Council",
+      "href": "/the_Council",
+      "children": []
+     },
+     {
+      "text": "The Committees",
+      "href": "/committees-section-21",
+      "children": []
+     },
+     {
+      "text": "Advisory Groups",
+      "href": "https://actuariesindia.org/advisory-groups-ags",
+      "children": []
+     },
+     {
+      "text": "Working Groups",
+      "href": "https://actuariesindia.org/working-group",
+      "children": []
+     },
+     {
+      "text": "Quality Review Board",
+      "href": "/quality-review-board-sec-43",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Acts, Regulations & Policies",
+    "links": [
+     {
+      "text": "Acts",
+      "href": "/act",
+      "children": []
+     },
+     {
+      "text": "Rules",
+      "href": "/rules",
+      "children": []
+     },
+     {
+      "text": "Regulations & Policies",
+      "href": "/regulations",
+      "children": []
+     },
+     {
+      "text": "Council Guidelines",
+      "href": "/council-guidelines",
+      "children": []
+     },
+     {
+      "text": "Right To Information",
+      "href": "/rti",
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Become an Actuary",
+  "href": "",
+  "groups": [
+   {
+    "title": "About Actuary",
+    "links": [
+     {
+      "text": "What Is An Actuary?",
+      "href": "/what-actuary",
+      "children": []
+     },
+     {
+      "text": "What Does An Actuary Do?",
+      "href": "/what-does-actuaries-do",
+      "children": []
+     },
+     {
+      "text": "Who Can Become An Actuary?",
+      "href": "/who-can-become-actuary",
+      "children": []
+     },
+     {
+      "text": "Meet Some Of Our Members",
+      "href": "/meet-some-our-members-0",
+      "children": []
+     },
+     {
+      "text": "Actuaries Speak",
+      "href": "/Testimonial",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Become A Student Member",
+    "links": [
+     {
+      "text": "ACET",
+      "href": "/acet-0",
+      "children": [
+       {
+        "text": "ACET Exam",
+        "href": "/about-acet",
+        "children": []
+       },
+       {
+        "text": "Exam Details",
+        "href": "#",
+        "children": []
+       },
+       {
+        "text": "ACET Exam Structure",
+        "href": "/acet-exam-structure",
+        "children": []
+       },
+       {
+        "text": "Examination Dates",
+        "href": "/examination-dates-1",
+        "children": []
+       },
+       {
+        "text": "Exam Center",
+        "href": "/exam-center-new",
+        "children": []
+       },
+       {
+        "text": "Important Documents",
+        "href": "/important-documents-3",
+        "children": []
+       },
+       {
+        "text": "Syllabus",
+        "href": "/syllabus",
+        "children": []
+       },
+       {
+        "text": "Question Papers And Solutions",
+        "href": "/question-papers-solutions",
+        "children": []
+       },
+       {
+        "text": "Results",
+        "href": "/entrance-exam-result",
+        "children": []
+       },
+       {
+        "text": "Frequently Asked Questions",
+        "href": "/frequently-asked-questions",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Non ACET (Direct Entry)",
+      "href": "/direct-entry",
+      "children": []
+     },
+     {
+      "text": "FAQ's",
+      "href": "/admissions-faq",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Actuarial Education",
+    "links": [
+     {
+      "text": "About IAI Course",
+      "href": "/about-iai-course",
+      "children": []
+     },
+     {
+      "text": "Education Curriculum",
+      "href": "/education-policy-2026",
+      "children": []
+     },
+     {
+      "text": "Actuarial Credentials",
+      "href": "/actuarial-credentials",
+      "children": []
+     },
+     {
+      "text": "Student Support Scheme",
+      "href": "/student-support-scheme",
+      "children": []
+     },
+     {
+      "text": "Study Material",
+      "href": "/study-material",
+      "children": [
+       {
+        "text": "Price List",
+        "href": "/study-material-price-list",
+        "children": []
+       },
+       {
+        "text": "General Information",
+        "href": "/general-information",
+        "children": []
+       },
+       {
+        "text": "General Information - Softcopy Material",
+        "href": "/general-information-softcopy-material-0",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Learning",
+      "href": "/node/3345",
+      "children": []
+     },
+     {
+      "text": "Certificate Program",
+      "href": "#",
+      "children": [
+       {
+        "text": "SOA IFRI Certificate Prgm",
+        "href": "/iai-soa-ifri-certificate-program",
+        "children": []
+       },
+       {
+        "text": "IAI SOA IFRI Program Details",
+        "href": "https://actuariesindia.org/sites/default/files/2023-12/IAI-SOA%20IFRI%20Certificate%20Program.pdf",
+        "children": []
+       },
+       {
+        "text": "FAQ's",
+        "href": "/frequently-asked-questions-4",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Prizes",
+      "href": "#",
+      "children": [
+       {
+        "text": "Prizes for Exam Performance",
+        "href": "/prizes-exam-performance",
+        "children": []
+       },
+       {
+        "text": "Invitation To Donate Prize Money",
+        "href": "/node/305",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Recognition Of Actuarial Course By Association Of Indian Universities (AIU) For Phd Purpose",
+      "href": "/recognition-actuarial-course-association-indian-universities-aiu-phd-purpose-0",
+      "children": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Actuarial Studies",
+  "href": "",
+  "groups": [
+   {
+    "title": "Olympiad",
+    "links": [
+     {
+      "text": "Olympiad",
+      "href": "/olympiad",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Entrance Exam",
+    "links": [
+     {
+      "text": "ACET Exam",
+      "href": "/about-acet",
+      "children": []
+     },
+     {
+      "text": "Exam Details",
+      "href": "#",
+      "children": [
+       {
+        "text": "ACET Exam Structure",
+        "href": "/acet-exam-structure",
+        "children": []
+       },
+       {
+        "text": "Examination Dates",
+        "href": "/examination-dates-1",
+        "children": []
+       },
+       {
+        "text": "Important Documents",
+        "href": "https://actuariesindia.org/important-documents-3",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Syllabus",
+      "href": "/syllabus",
+      "children": []
+     },
+     {
+      "text": "Question Papers And Solutions",
+      "href": "https://actuariesindia.org/question-papers-solutions",
+      "children": []
+     },
+     {
+      "text": "Results",
+      "href": "https://actuariesindia.org/entrance-exam-result?field_result_years_target_id-2=1344",
+      "children": []
+     },
+     {
+      "text": "Frequently Asked Questions",
+      "href": "/frequently-asked-questions",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Actuarial Examination",
+    "links": [
+     {
+      "text": "Syllabus",
+      "href": "/syllabus-0",
+      "children": []
+     },
+     {
+      "text": "Results",
+      "href": "https://actuariesindia.org/examination-result",
+      "children": []
+     },
+     {
+      "text": "Actuarial Exams",
+      "href": "/actuarial-exams",
+      "children": []
+     },
+     {
+      "text": "List of Exam Centers",
+      "href": "https://actuariesindia.org/list_of_exam_center",
+      "children": []
+     },
+     {
+      "text": "Exam Announcements",
+      "href": "https://actuariesindia.org/exam-announcements",
+      "children": []
+     },
+     {
+      "text": "Exam Policies & Guidelines",
+      "href": "https://actuariesindia.org/exam-policies-guidelines",
+      "children": []
+     },
+     {
+      "text": "Question Papers & Solution",
+      "href": "https://actuariesindia.org/question-paper-solutions?field_year_target_id=1343&amp;field_subject_target_id=All",
+      "children": []
+     },
+     {
+      "text": "Frequently Asked Questions",
+      "href": "/frequently-asked-questions-1",
+      "children": []
+     },
+     {
+      "text": "CB3",
+      "href": "#",
+      "children": [
+       {
+        "text": "About CB3",
+        "href": "/about-cb3",
+        "children": []
+       },
+       {
+        "text": "Exam Structure",
+        "href": "/cb3-exam-structure",
+        "children": []
+       },
+       {
+        "text": "Examination Dates",
+        "href": "/examination-dates",
+        "children": []
+       },
+       {
+        "text": "Results",
+        "href": "/cb3-result",
+        "children": []
+       },
+       {
+        "text": "Frequently Asked Questions",
+        "href": "/frequently-asked-questions-0",
+        "children": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Members",
+  "href": "/content-updated-soon",
+  "groups": [
+   {
+    "title": "Member Services",
+    "links": [
+     {
+      "text": "Qualify",
+      "href": "#",
+      "children": [
+       {
+        "text": "Student",
+        "href": "/student",
+        "children": []
+       },
+       {
+        "text": "Associate",
+        "href": "/associate",
+        "children": []
+       },
+       {
+        "text": "Fellow",
+        "href": "/fellow",
+        "children": []
+       },
+       {
+        "text": "CERA",
+        "href": "/cera-chartered-enterprise-risk-actuary-qualification",
+        "children": []
+       },
+       {
+        "text": "MRA",
+        "href": "/mra",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Change of Name",
+      "href": "/change-name",
+      "children": []
+     },
+     {
+      "text": "Annual Membership",
+      "href": "/annual-membership",
+      "children": [
+       {
+        "text": "FAQs",
+        "href": "/annual-membership-faq",
+        "children": []
+       },
+       {
+        "text": "Fee Details",
+        "href": "/annual-membership-fee-details",
+        "children": []
+       },
+       {
+        "text": "Mode of Payment",
+        "href": "/mode-payment",
+        "children": []
+       },
+       {
+        "text": "Important Forms",
+        "href": "/important-forms",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Exemptions",
+      "href": "/exemptions-new",
+      "children": []
+     },
+     {
+      "text": "Other services",
+      "href": "/verification",
+      "children": [
+       {
+        "text": "Performance Report",
+        "href": "/performance-report",
+        "children": []
+       },
+       {
+        "text": "Verification of IAI Member",
+        "href": "/verification-iai-member",
+        "children": []
+       },
+       {
+        "text": "Confirmation on Fellowship & Associateship",
+        "href": "/confirmation-fellowship-associateship",
+        "children": []
+       },
+       {
+        "text": "Academic Records",
+        "href": "/academic-records",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Library",
+      "href": "/library-services",
+      "children": []
+     },
+     {
+      "text": "Trace an actuary",
+      "href": "#",
+      "children": []
+     },
+     {
+      "text": "List of Members - As on 1st April 2026",
+      "href": "#",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Actuarial Career",
+    "links": [
+     {
+      "text": "Career Advice",
+      "href": "/career-advice",
+      "children": []
+     },
+     {
+      "text": "How to get the first job",
+      "href": "/how-get-first-job",
+      "children": []
+     },
+     {
+      "text": "Placement Cell",
+      "href": "/placement-cell",
+      "children": []
+     },
+     {
+      "text": "Actuarial Employers",
+      "href": "/actuarial-employers",
+      "children": []
+     },
+     {
+      "text": "Actuarial Envoy",
+      "href": "/actuarial-envoy",
+      "children": [
+       {
+        "text": "Volunteering Opportunities",
+        "href": "/volunteering-opportunities",
+        "children": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Professionalism",
+    "links": [
+     {
+      "text": "Professional Conduct Standards",
+      "href": "/professional-code-conduct",
+      "children": []
+     },
+     {
+      "text": "APS/GN",
+      "href": "/actuarial-practice-standards",
+      "children": []
+     },
+     {
+      "text": "Compliance Questionnaire (Life)",
+      "href": "/compliance-questionnaire-life-0",
+      "children": []
+     },
+     {
+      "text": "Disciplinary Cases",
+      "href": "#",
+      "children": [
+       {
+        "text": "ACET Copying Case",
+        "href": "/copying-cases",
+        "children": []
+       },
+       {
+        "text": "Examination Copying Case",
+        "href": "/session-wise-0",
+        "children": []
+       },
+       {
+        "text": "Professional & other misconducts related cases as per the actuaries act, 2002",
+        "href": "/disciplinary-cases",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "CPD",
+      "href": "#",
+      "children": [
+       {
+        "text": "Member List : CPD Non-Compliant",
+        "href": "/member-list-cpd-non-compliant/",
+        "children": []
+       },
+       {
+        "text": "Important Documents",
+        "href": "/important-documents-4",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "CoP",
+      "href": "#",
+      "children": [
+       {
+        "text": "Important Documents",
+        "href": "/important-documents-0",
+        "children": []
+       },
+       {
+        "text": "List of COP Holders",
+        "href": "/list-cop-holders",
+        "children": []
+       }
+      ]
+     },
+     {
+      "text": "Publication",
+      "href": "#",
+      "children": [
+       {
+        "text": "Mortality Table",
+        "href": "/mortality-table",
+        "children": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Events",
+  "href": "",
+  "groups": [
+   {
+    "title": "Events",
+    "links": [
+     {
+      "text": "Upcoming Events",
+      "href": "/upcoming-events",
+      "children": []
+     },
+     {
+      "text": "Registration",
+      "href": "/seminar-registration",
+      "children": []
+     },
+     {
+      "text": "Past Events",
+      "href": "/events-past",
+      "children": []
+     },
+     {
+      "text": "India Fellowship Seminar",
+      "href": "/India-Fellowship-Seminar",
+      "children": []
+     },
+     {
+      "text": "Sponsorship",
+      "href": "/sponsorship-opportunity",
+      "children": []
+     },
+     {
+      "text": "Speaking Opportunities",
+      "href": "/speaking-opportunity",
+      "children": []
+     },
+     {
+      "text": "FAQ’s Events",
+      "href": "/events-faqs",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Conference",
+    "links": [
+     {
+      "text": "Global Conference of Actuaries (GCA)",
+      "href": "/list-of-past-conferences",
+      "children": []
+     },
+     {
+      "text": "Virtual Actuarial Conclave (VAC)",
+      "href": "/list-of-past-conclaves",
+      "children": []
+     },
+     {
+      "text": "Actuaries Day",
+      "href": "/actuaries-day",
+      "children": []
+     }
+    ]
+   },
+   {
+    "title": "Outreach Activity",
+    "links": [
+     {
+      "text": "Outreach & Connect Programmes",
+      "href": "/outreach-and-connect-programmes",
+      "children": []
+     },
+     {
+      "text": "Member Login",
+      "href": "https://member.actuariesindia.org/member/login",
+      "children": []
+     },
+     {
+      "text": "ActuJobs",
+      "href": "https://member.actuariesindia.org/actujobs/home/",
+      "children": []
+     },
+     {
+      "text": "Admission",
+      "href": "https://member.actuariesindia.org/admission",
+      "children": []
+     }
+    ]
+   }
+  ]
+ }
+]
