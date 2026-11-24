@@ -555,3 +555,13 @@ header.site .actions{flex:none}
   header.site .actions .btn.red{padding:9px 10px;font-size:12.5px}
 }
 @media (max-width:480px){header.site .brand{min-height:44px;align-items:center}}
+
+/* design switcher: hidden until the visitor pulls down at the top of the page for about 3 seconds */
+.dsw{position:fixed;top:0;left:0;right:0;z-index:100;transform:translateY(-100%);transition:transform .3s;background:#0B0F1A;color:#AEB7CC;font:500 12.5px/1 system-ui,sans-serif;display:flex;gap:6px;align-items:center;justify-content:center;padding:6px 12px;min-height:44px;flex-wrap:wrap}
+.dsw.show{transform:none;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.dsw-pull{position:fixed;top:0;left:0;right:0;height:3px;background:#2563EB;z-index:101;transform:scaleX(0);transform-origin:left;pointer-events:none}
+.dsw span{margin-right:8px;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.dsw a{padding:0 14px;min-height:28px;display:inline-flex;align-items:center;border-radius:999px;border:1px solid #3A4560;color:#fff;font-weight:600}
+.dsw a:hover{border-color:#fff}.dsw a[aria-current]{background:#fff;color:#0B0F1A;border-color:#fff}
+@media (prefers-reduced-motion:reduce){.dsw{transition:none}}
+@media (max-width:600px){.dsw span{display:none}.dsw{min-height:48px}.dsw a{min-height:36px}}

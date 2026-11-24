@@ -1,4 +1,5 @@
 // Shared layout pieces: header (with mega menu), footer, page shells.
+export const SITE_B = process.env.SITE === 'b';
 export const arr = `<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
 export const PORTAL = {
   login: 'https://member.actuariesindia.org/member/login',
@@ -30,17 +31,25 @@ export function head(title, navHtml, opts = {}) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${title} · Institute of Actuaries of India</title>
-<meta name="description" content="${opts.description || 'Institute of Actuaries of India — statutory body for the actuarial profession. Design exploration, Direction A.'}">
+<meta name="description" content="${opts.description || `Institute of Actuaries of India — statutory body for the actuarial profession. Design exploration, Direction ${SITE_B ? 'B' : 'A'}.`}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css"><script src="assets/site.js" defer></script></head><body>
+<link href="${SITE_B ? 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap' : 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap'}" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">${SITE_B ? '<link rel="stylesheet" href="assets/theme-b.css">' : ''}<script src="assets/site.js" defer></script></head><body>
 <a href="#main" class="skip">Skip to content</a>
+<div class="dsw-pull" aria-hidden="true"></div><div class="dsw" role="navigation" aria-label="Design direction"><span>Design preview</span><a href="${SITE_B ? '../index.html' : 'index.html'}" data-d="a"${SITE_B ? '' : ' aria-current="true"'}>A · The Institution</a><a href="${SITE_B ? 'index.html' : 'b/index.html'}" data-d="b"${SITE_B ? ' aria-current="true"' : ''}>B · The Data Lens</a></div><script>(function(){var f=location.pathname.split('/').pop()||'index.html',b=${SITE_B ? 'true' : 'false'},bar=document.querySelector('.dsw'),pg=document.querySelector('.dsw-pull');bar.querySelectorAll('a').forEach(function(a){var d=a.dataset.d;a.href=(d==='a')?(b?'../':'')+f:(b?'':'b/')+f});
+var acc=0,last=0,HOLD=3000;function show(on){bar.classList.toggle('show',on);if(!on){acc=0;pg.style.transform='scaleX(0)'}}
+function pull(){var n=Date.now();if(window.scrollY>0||bar.classList.contains('show'))return;if(n-last>500)acc=0;acc+=last?Math.min(n-last,200):0;last=n;pg.style.transform='scaleX('+Math.min(acc/HOLD,1)+')';if(acc>=HOLD)show(true)}
+addEventListener('wheel',function(e){if(e.deltaY<0)pull();else if(bar.classList.contains('show'))show(false)},{passive:true});
+var ty=null;addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});addEventListener('touchmove',function(e){if(ty!==null&&e.touches[0].clientY>ty+4)pull()},{passive:true});addEventListener('touchend',function(){ty=null;last=0;if(!bar.classList.contains('show')){acc=0;pg.style.transform='scaleX(0)'}});
+addEventListener('scroll',function(){if(window.scrollY>12&&bar.classList.contains('show'))show(false)},{passive:true});
+addEventListener('keydown',function(e){if(e.ctrlKey&&e.altKey&&e.key.toLowerCase()==='d')show(!bar.classList.contains('show'))});
+setInterval(function(){if(!bar.classList.contains('show')&&Date.now()-last>600&&acc>0){acc=0;pg.style.transform='scaleX(0)'}},400)})()</script>
 <div class="util"><div class="wrap"><span class="t">Statutory body under the Actuaries Act, 2006</span>
 <nav aria-label="Utility"><a href="annual-membership.html">Annual Membership</a><a href="${PORTAL.acetSignup}" target="_blank" rel="noopener">ACET Sign Up</a><a href="${PORTAL.acetLogin}" target="_blank" rel="noopener">ACET Login</a><a href="${PORTAL.login}" target="_blank" rel="noopener">Member Login</a><a href="${PORTAL.jobs}" target="_blank" rel="noopener" class="jobs">ActuJobs</a></nav></div></div>
 <header class="site"><div class="wrap">
 <a class="brand" href="index.html" aria-label="Institute of Actuaries of India — home">${mark()}<span><span class="a">Institute of</span><span class="b">Actuaries of India</span></span></a>
 <nav class="primary" id="nav" aria-label="Primary">${navHtml}</nav>
-<div class="actions"><a class="iconbtn" href="search.html" aria-label="Search the site">${svgi('search')}</a><a class="btn red sm" href="${PORTAL.admission}" target="_blank" rel="noopener">Admission</a>
+<div class="actions">${SITE_B ? `<form class="hsearch" role="search" action="search.html" method="get"><label class="sr" for="hq">Search the site</label>${svgi('search')}<input id="hq" name="q" type="search" placeholder="Search exams, dates, fees…" autocomplete="off"></form>` : ''}<a class="iconbtn" href="search.html" aria-label="Search the site">${svgi('search')}</a><a class="btn red sm" href="${PORTAL.admission}" target="_blank" rel="noopener">Admission</a>
 <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-controls="nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
 </div></header>`;
 }

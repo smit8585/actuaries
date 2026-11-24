@@ -2,9 +2,11 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { slugOf, fileOf, ORIGIN, FILE_RE, dec, textOf } from './lib/util.mjs';
-import { arr, ico, shell, head, foot, esc, PORTAL } from './lib/layout.mjs';
+import { arr, ico, shell, head, foot, esc, PORTAL, SITE_B } from './lib/layout.mjs';
+import { cpSync, copyFileSync } from 'node:fs';
 
-const OUT = 'site';
+const OUT = SITE_B ? 'site-b' : 'site';
+if (SITE_B) { mkdirSync(OUT, { recursive: true }); cpSync('site/assets', join(OUT, 'assets'), { recursive: true }); copyFileSync('scripts/themes/b.css', join(OUT, 'assets/theme-b.css')); }
 const pages = JSON.parse(readFileSync('scripts/data/pages.json', 'utf8'));
 const menu = JSON.parse(readFileSync('scripts/data/menu.json', 'utf8'));
 for (const k of Object.keys(pages)) { if (!k.startsWith('index.php__')) continue; const base = k.slice(11); if (!pages[base]) { pages[base] = pages[k]; pages[base].slug = base; } delete pages[k]; }
@@ -405,7 +407,8 @@ ${EV.map((e, i) => `<a class="event${i === 0 ? ' feat' : ''}" href="${L(e[4])}">
 <div class="vmv"><a href="${L('/vision-mission')}"><b>Vision</b><span>Where the Institute is headed</span></a><a href="${L('/vision-mission')}"><b>Mission</b><span>What the Institute does</span></a><a href="${L('/vision-mission')}"><b>Values</b><span>How the Institute acts</span></a></div></div></div></section>
 
 <div class="partners"><div class="wrap"><p>Employers and partners across the actuarial community</p><div class="row logos">${[['allianz', 'Allianz'], ['gicre', 'GIC Re'], ['lic', 'LIC'], ['milliman', 'Milliman'], ['wtw', 'WTW'], ['tataaia', 'Tata AIA'], ['rbi', 'RBI'], ['pfrda', 'PFRDA'], ['oriental', 'The Oriental Insurance'], ['uiic', 'United India Insurance']].map(([f, n]) => `<a href="${L('/placement-cell')}" aria-label="${n}"><img src="assets/img/partner-${f}.png" alt="${n}" loading="lazy"></a>`).join('')}</div></div></div>`;
-write('index.html', head('Home', navHtml) + `<main id="main">${home}</main>` + foot);
+const homeB = SITE_B ? (await import('./themes/b-home.mjs')).default({ L, annRow, ANN, EV, GCA, tickSet, arr, ico, PORTAL, abs, findHref }) : '';
+write('index.html', head('Home', navHtml) + `<main id="main">${SITE_B ? homeB : home}</main>` + foot);
 
 /* ---------- link audit ---------- */
 const files = new Set(readdirSync(OUT));
@@ -416,7 +419,7 @@ for (const f of files) {
   for (const m of html.matchAll(/(?:href|src)="([^"#][^"]*)"/g)) {
     const u = m[1];
     if (/^(https?:|mailto:|tel:|data:)/.test(u)) { ext++; continue; }
-    if (u.includes("'+")) continue;
+    if (u.includes("'+") || u.startsWith('b/') || u.startsWith('../')) continue; // design switcher links resolve only in the combined deploy
     totalLinks++;
     const path = u.split('#')[0].split('?')[0];
     if (!path) continue;
