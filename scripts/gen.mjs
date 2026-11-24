@@ -144,6 +144,17 @@ function processContent(p) {
   h = h.replace(/\sid="([^"]+)"/g, (m, id) => { if (seenIds.has(id)) return ''; seenIds.add(id); return m; });
   h = h.replace(/(<\/a>)\s*[0-9]+(?:\.[0-9]+)?\s?(?:KB|MB|GB)\b/gi, '$1'); // drop file sizes shown next to document links
   h = fixAnchors(h);
+  // listing pagers: heading becomes screen-reader only, labels become "1 2 3 … Next › Last »"
+  h = h.replace(/<nav aria-label="Section navigation">\s*<h2[^>]*>Pagination<\/h2>[\s\S]*?<\/nav>/g, blk => blk.replace(/<h2[^>]*>Pagination<\/h2>/, '<h2 class="pager-h">Pagination</h2>').replace(/<a ([^>]*)>\s*([\s\S]*?)<\/a>/g, (m, a, t) => {
+    t = t.replace(/\s+/g, ' ').trim(); const full = t; let cur = false;
+    if (/^Current page/.test(t)) { cur = true; t = t.replace(/^Current page /, ''); }
+    else if (/^Page /.test(t)) t = t.replace(/^Page /, '');
+    else if (/^Next page/.test(t)) t = 'Next ›';
+    else if (/^Previous page/.test(t)) t = '‹ Previous';
+    else if (/^Last page/.test(t)) t = 'Last »';
+    else if (/^First page/.test(t)) t = '« First';
+    a = a.replace(/\saria-label="[^"]*"/, ''); return `<a ${a} aria-label="${full.replace(/"/g, '&quot;')}"${cur ? ' aria-current="page"' : ''}>${t}</a>`;
+  }));
   return balance(labelGeneric(h, p));
 }
 

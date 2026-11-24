@@ -118,7 +118,7 @@ nav.primary a:hover,nav.primary a[aria-current]{background:var(--sand);color:var
 .content .prose{background:#fff;border:1px solid var(--rule);border-radius:24px;padding:36px}
 .prose h2,.prose h3{font-family:var(--sans)}
 .card{border-radius:var(--r);background:#fff}
-.side .sidelist{border-radius:var(--r);background:#fff;border:1px solid var(--rule)}
+@media (max-width:1100px){.side .sidelist{background:#fff}}
 .hub-feat,.hub-row,.hub-link,.hub-group{border-radius:var(--r)}
 .mega{border-radius:20px;box-shadow:0 30px 60px -30px rgba(11,30,63,.45)}
 .searchbox input{border-radius:999px}
@@ -145,8 +145,33 @@ footer.site .fh{font-family:var(--mono);letter-spacing:.08em}
 }
 .link{min-height:40px}.hsearch input{height:40px}
 
+/* header polish: brand never touches the nav, pill-shaped hover instead of a curved underline */
+header.site .wrap{gap:28px}
+.brand{flex:none;margin-right:8px}
+@media (min-width:1281px){
+  nav.primary .navlist>li{align-self:center;display:flex;align-items:center}
+  nav.primary .navlist>li>a.top{border-bottom:0;border-radius:999px;height:40px;display:inline-flex;align-items:center;padding:0 10px 0 14px}
+  nav.primary .navlist>li:not(.has-mega)>a.top{padding:0 14px}
+  nav.primary .navlist>li>a.top:hover,nav.primary .navlist>li.has-mega.open>a.top,nav.primary .navlist>li>a.top[aria-current]{background:var(--sand);border-bottom:0}
+  nav.primary .has-mega>.chevbtn{height:40px;width:30px;min-width:0;padding:0;border:0;border-radius:50%;margin-left:-4px;align-self:center}
+  nav.primary .has-mega>.chevbtn:hover{background:var(--sand)}
+  .has-mega>.chevbtn:focus-visible,nav.primary a:focus-visible{outline:3px solid var(--blue);outline-offset:1px;border-radius:999px}
+}
+/* sidebar: one clean card that scrolls inside itself */
+@media (min-width:1101px){
+  .side{background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:18px 18px 12px;scrollbar-width:thin;scrollbar-color:#B8C4DD transparent}
+  .side .sidelist{background:transparent;border:0;border-radius:0}
+  .side::-webkit-scrollbar{width:8px}.side::-webkit-scrollbar-thumb{background:#B8C4DD;border-radius:8px}
+}
+.side .sidelist{border-radius:0}
+/* hub pages: straight dividers (rounded corners made the borders curl) */
+.hub-row,.hub-link,.hub-group{border-radius:0}
+.hub-link:hover .t{color:var(--blue)}
+/* the last bento tile is a slim banner, not a tall empty card */
+.bento{grid-auto-rows:auto}.tile{min-height:190px}.tile.t-ver{min-height:0;padding:20px 24px}
+
 /* responsive */
-@media (max-width:1480px){.hsearch{display:none}.actions .iconbtn{display:grid;background:var(--bg);border:1px solid var(--rule);border-radius:50%;width:44px;height:44px;place-items:center}}
+@media (max-width:1700px){.hsearch{display:none}.actions .iconbtn{display:grid;background:var(--bg);border:1px solid var(--rule);border-radius:50%;width:44px;height:44px;place-items:center}}
 nav.primary{gap:2px}nav.primary a.top{padding:8px 12px}
 @media (max-width:980px){.b-hero .wrap,.b-two,.b-about{grid-template-columns:minmax(0,1fr)}.bento{grid-template-columns:1fr 1fr}.tile.t-asp{grid-column:span 2}.b-path{grid-template-columns:1fr 1fr}.b-path::before{display:none}.b-res{grid-template-columns:1fr}.b-stats dl{grid-template-columns:1fr 1fr}.b-stats dl>div:nth-child(3){border-left:0;padding-left:0}}
 @media (max-width:600px){.bento{grid-template-columns:1fr}.tile.t-asp{grid-column:auto;grid-row:auto;min-height:260px}.tile.t-ver{flex-direction:column;align-items:flex-start}.b-path{grid-template-columns:1fr}.b-search{padding-left:14px}.b-search button{padding:0 18px}.b-stats dt{font-size:34px}.content .prose{padding:20px;border-radius:18px}header.site .wrap{border-radius:22px;height:64px;padding:0 10px 0 14px}.vmv{grid-template-columns:1fr}}
