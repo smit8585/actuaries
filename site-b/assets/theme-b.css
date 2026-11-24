@@ -133,6 +133,18 @@ nav.primary a:hover,nav.primary a[aria-current]{background:var(--sand);color:var
 footer.site{background:var(--navy);margin-top:70px;border-radius:36px 36px 0 0}
 footer.site .fh{font-family:var(--mono);letter-spacing:.08em}
 
+/* mobile menu: solid panel under the pill, chevron on the same row as its label */
+@media (max-width:1280px){
+  nav.primary{top:calc(100% + 10px);border:1px solid var(--rule);border-radius:20px;box-shadow:0 24px 50px -24px rgba(11,30,63,.5);background:#fff;padding:0 18px;z-index:30}
+  nav.primary .navlist>li>a.top{border-radius:0;padding:14px 0}
+  nav.primary .navlist>li>a.top:hover{background:transparent}
+  nav.primary .has-mega>.chevbtn{width:48px;flex:none;min-width:48px}
+  .mega-in{grid-template-columns:minmax(0,1fr)}
+  .mega{overflow:visible;background:#fff}
+  body:has(nav.primary.open) .ticker{visibility:hidden}
+}
+.link{min-height:40px}.hsearch input{height:40px}
+
 /* responsive */
 @media (max-width:1480px){.hsearch{display:none}.actions .iconbtn{display:grid;background:var(--bg);border:1px solid var(--rule);border-radius:50%;width:44px;height:44px;place-items:center}}
 nav.primary{gap:2px}nav.primary a.top{padding:8px 12px}
