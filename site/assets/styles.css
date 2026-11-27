@@ -574,3 +574,13 @@ header.site .actions{flex:none}
 .util .t,.util nav a{white-space:nowrap}
 @media (max-width:1180px){.util .t{display:none}.util .wrap{justify-content:center}}
 @media (max-width:760px){.util nav{gap:18px}.util .wrap{padding:0 12px}.util nav a.jobs{padding-left:18px}}
+
+/* menu dropdowns */
+nav.primary .mega a{white-space:normal;overflow-wrap:anywhere}
+@media (min-width:1281px){
+  .mega{overflow-x:hidden}
+}
+@media (max-width:1280px){
+  nav.primary,nav.primary.open{top:100%;box-shadow:0 24px 40px -20px rgba(11,27,51,.35)}
+  nav.primary .has-mega>.chevbtn{width:48px;flex:none}
+}
