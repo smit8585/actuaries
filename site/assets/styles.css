@@ -569,3 +569,8 @@ header.site .actions{flex:none}
 /* listing pagers */
 .prose nav[aria-label="Section navigation"] .pager-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
 .prose nav[aria-label="Section navigation"] a[aria-current="page"]{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* utility bar: always one line; the statutory line gives way first */
+.util .t,.util nav a{white-space:nowrap}
+@media (max-width:1180px){.util .t{display:none}.util .wrap{justify-content:center}}
+@media (max-width:760px){.util nav{gap:18px}.util .wrap{padding:0 12px}.util nav a.jobs{padding-left:18px}}
